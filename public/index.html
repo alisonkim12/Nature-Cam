@@ -1,0 +1,111 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type = "text/css" href="/css/style.css"/>
+    <!-- <script type="text/javascript" async src="https://tenor.com/embed.js"></script> -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <title>Nature Cams Around the World</title>
+<body>
+    <section>
+        <div class="title-display-container">
+            <span id = "map-button"><a href = "./newmap.html">[ 📍 ]</a></span>
+            <div class="title-container">
+                <div class = "title-heading">NATURECAMS AROUND THE WORLD</div>
+                <div class = "subtitle-heading">NATURE LIVE AROUND THE WORLD</div>
+            </div>
+            <div class="index-container">
+                <span id="index-button"><a href="#">[ 🌱 ]</a></span>
+                <div class="overlay" id="overlay">
+                    <div class="overlay-content">
+                        <span>Video Index</span>                      
+                        <p id = "index-text"></p>
+                        <span id="close-button">[ close ]</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div style = "position: absolute; width: 3%; height: auto; z-index: 2; right: 5%; top: 41%; transform: rotate(-30deg);"><img alt = "sticker of yellow bird" style = "width: 100%;" src = "/media/bird-34663_1280.png"></div>
+    <div style = "position: absolute; width: 5%; height: auto; z-index: 2; left: 15%; bottom: 10%;"><img alt = "sticker of a badger" style = "width: 100%;" src = "/media/badger-nature.gif"></div>
+    <div style = "position: absolute; width: 2.5%; height: auto; z-index: 2; left: 22%; bottom: 10%;"><img style = "width: 100%;" alt = "sticker of a chipmunk" src = "/media//chipmunk-nature.gif"></div>
+    <div style = "position: absolute; width: 10%; height: auto; z-index: 2; left: 25%; bottom: 10%;"><img style = "width: 100%;" alt = "sticker of an elephant" src = "/media//elephant-nature.gif"></div>
+    <div style = "position: absolute; width: 5%; height: auto; z-index: 2; right: 15%; top: 0%;"><img style = "width: 100%;" alt = "gif of a bird flapping its wings" src = "/media/flying-bird.gif"></div>
+    <div style = "position: absolute; width: 7.5%; height: auto; z-index: 2; left: 65%; bottom: 10%; transform: scaleX(-1);"><img style = "width: 100%;" alt = "gif of a pigeon peking at some seeds on the ground" src = "/media//pigeon.gif"></div>
+    <div style = "position: absolute; width: 7.5%; height: auto; z-index: 2; left: 15%; top: -3%; transform: scaleX(-1);"><img style = "width: 100%;" alt = "sticker of a sloth" src = "/media//sloth-animal.gif"></div>
+    <div style = "position: absolute; width: 30%; height: auto; z-index: 2; right: -5%; bottom: 5%; opacity: 0.8;"><img style = "width: 100%;" alt = "gif of a tree changing through the seasons" src = "/media//tree-seasons.gif"></div>
+    <div style = "position: absolute; z-index: 2; width: 10%; left: 50%; top: 50%;"><img style = "width: 100%; opacity: 0.9;" alt = "gif of a little bug roaming around in a path" src = "/media//kstr-kochstrasse.gif"></div>
+    <div style = "position: absolute; top: 5%; left: 10%; width: 40%; height: auto; z-index: 1;"><img style = "width: 100%; opacity: 0.9;" alt = "picture of an overgrown vine" src = "/media//vines-png-43660.png"></div>
+    <div style = "position: absolute; bottom: -40%; width: 100%; height: auto; z-index: 10; overflow: hidden; z-index: 1;"><img style = "width: 100%; opacity: 0.7;" alt = "sticker of medium-length grass" src = "/media/grass-159804_1280.png"></img></div>
+    <div style = "left: 84%; top: 0%;" class="gif-embeds"><img style = "width: 100%;" alt = "gif of a bright light blue butterfly flapping its wings" src="/media//borboletas-butterflies.gif"></img></div> 
+    <div style = "left: 6%; top: 80%; transform: scaleX(-1);" class="gif-embeds"><img style = "width: 100%;" alt = "gif of a bright light yellow butterfly flapping its wings" src="/media//borboletas-butterflies_yellow (1).gif"></img></div>  
+    <section>
+        <div id="livestreams-container">
+            <div style = "font-family: Lobster, sans-serif; font-weight: 400; font-style: normal;" id = "loading-text">videos loading...</div>
+            <div class = "naturecam" id="naturecam-1">
+                <div class="iframe-wrapper">
+                    <iframe id="video-1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allow="autoplay" allowfullscreem title=""></iframe>
+                    <div class="iframe-overlay"></div>
+                    <div class = "caption" id = "video-1-caption">
+                        <span class = "location-name" id = "video-1-location-name"></span>
+                        <span class = "location-coordinates" id = "video-1-location-coord"></span>
+                        <span class = "location-address" id = "video-1-location-address"></span>
+                    </div>
+                </div>
+            </div>
+            <div class = "naturecam" id="naturecam-2">
+                <div class="iframe-wrapper">
+                    <iframe id="video-2" allow="autoplay; fullscreen" title=""></iframe>
+                    <div class="iframe-overlay"></div>
+                    <div class = "caption" id = "video-2-caption">
+                        <span class = "location-name" id = "video-2-location-name"></span>
+                        <span class = "location-coordinates" id = "video-2-location-coord"></span>
+                        <span class = "location-address" id = "video-2-location-address"></span>
+                    </div>
+                </div>
+            </div>
+            <div class = "naturecam" id="naturecam-3">
+                <div class="iframe-wrapper">
+                    <iframe id="video-3" allow="autoplay; fullscreen" title=""></iframe>
+                    <div class="iframe-overlay"></div>
+                    <div class = "caption" id = "video-3-caption">
+                        <span class = "location-name" id = "video-3-location-name"></span>
+                        <span class = "location-coordinates" id = "video-3-location-coord"></span>
+                        <span class = "location-address" id = "video-3-location-address"></span>
+                    </div>
+                </div>
+            </div>
+            <div class = "naturecam" id="naturecam-4">
+                <div class="iframe-wrapper">
+                    <iframe id="video-4" allow="autoplay; fullscreen" title=""></iframe>
+                    <div class="iframe-overlay"></div>
+                    <div class = "caption" id = "video-4-caption">
+                        <span class = "location-name" id = "video-4-location-name"></span>
+                        <span class = "location-coordinates" id = "video-4-location-coord"></span>
+                        <span class = "location-address" id = "video-4-location-address"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>  
+        <div class="user-controls">
+            <span>
+                <a id = "info-button"><i style = "font-size: 25px;"class="ri-information-2-line"></i></a>
+                <div id="info-popup">
+                    Click around a [range] of 50 youtube live cams displayed as embeds of the whereabouts and [happenings] of various animals and critters around the world. [Go] to the map page to [look around/purview/view] at each live cam based on location. Made by Alison (link to website). 
+                </div>
+            </span>
+            <span id = "shuffle-button"><a>[ shuffle ]</a></span>
+            <span id = "sound-button"><a>[ 🔉 ]</a></span>
+        </div> 
+    </section>
+    <!-- <script src = "get-cams.js"></script> -->
+<script defer src="/bundle.js"></script></body>
+<script type="application/javascript" defer src="/js/script.js"></script>
+
+<!-- <script type="module" src = "mapsscript.js "></script> -->
+
+</html>
