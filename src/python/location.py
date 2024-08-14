@@ -53,8 +53,6 @@ def find_naturecam_locations(captions):
     session.timeout = timeout_seconds
 
     geolocator = Nominatim(user_agent="location_extractor")
-    # api_key = "AIzaSyDCTVjOjE4TehokJZy9Ar8MYrTFquQ1vbg"
-    api_key = "AIzaSyAepEGY8kS0T7mibKCEQjLFBUkXTXUV-7o"
     nlp = spacy.load("en_core_web_sm")
 
     def generate_combinations(source):
