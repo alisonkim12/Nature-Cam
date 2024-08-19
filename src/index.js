@@ -33,7 +33,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const cacheExpiration = 300; // Cache expiration time in seconds (e.g., 5 minutes)
 const redisClient = redis.createClient({
-  url: 'redis://localhost:6379'
+  url: process.env.REDIS_URL
 });
 
 app.use(cors());
