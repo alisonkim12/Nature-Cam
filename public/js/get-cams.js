@@ -84,10 +84,10 @@ async function fetchLiveVideos(channelId) {
         // Simulate caching for browser environment
         const cachedData = sessionStorage.getItem(cacheKey);
         if (cachedData) {
-            console.log(`Cache hit for channel ${channelId}`);
+            // console.log(`Cache hit for channel ${channelId}`);
             resolve(JSON.parse(cachedData));
         } else {
-            console.log(`Cache miss for channel ${channelId}`);
+            // console.log(`Cache miss for channel ${channelId}`);
             // fetch(`https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${channelId}&part=snippet,status&type=video&eventType=live&order=viewCount&maxResults=${MAX_RESULTS}`)
                 // fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&key=${API_KEY}`)
             fetch(`https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${channelId}&part=snippet&type=video&eventType=live&order=viewCount&maxResults=${MAX_RESULTS}`)
@@ -123,7 +123,7 @@ async function fetchLiveVideos(channelId) {
 async function getFullVideoInfo(liveVideosFromChannel) {
     const videoPromises = liveVideosFromChannel.map(async video => {
         let result = await getLocations(video.snippet.title, video.snippet.description);
-        console.log("Location result: ", result);
+        // console.log("Location result: ", result);
 
         if (result.length === 0) {
             return {
@@ -157,7 +157,7 @@ async function getFullVideoInfo(liveVideosFromChannel) {
 
 
 async function getLocations(videoTitle, videoDescription){
-    console.log("Getting locations for: ", videoTitle);
+    // console.log("Getting locations for: ", videoTitle);
     let modifiedTitle = videoTitle.replace(/"/g, '\\"');
     modifiedTitle = modifiedTitle.replace(/['"]/g, "");
     let modifiedDescription = videoDescription.replace(/"/g, '\\"');
@@ -259,7 +259,7 @@ window.addEventListener('load', async () => {
     // Check if the cached data exists and whether it was updated within the last 12 hours
     const isUpToDate = cachedLiveVideos && lastUpdate && (Date.now() - lastUpdate < 43200000); // 12 hours in milliseconds
     if (isUpToDate) {
-        console.log("Using cached live videos data");
+        // console.log("Using cached live videos data");
         const liveVideos = JSON.parse(cachedLiveVideos);
         createVideoIndex(liveVideos);
         loadInitialVideos(liveVideos);
@@ -271,7 +271,7 @@ window.addEventListener('load', async () => {
                     await getFullVideoInfo(liveVideosFromChannel);
                 }
             }
-            console.log("FULL LIVE VIDEOS INFO: ", liveVideos);
+            // console.log("FULL LIVE VIDEOS INFO: ", liveVideos);
             localStorage.setItem('videodataset', JSON.stringify(liveVideos));
             localStorage.setItem('videodatasetTimestamp', Date.now()); // Update the timestamp
             createVideoIndex(liveVideos);

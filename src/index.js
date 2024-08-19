@@ -63,21 +63,21 @@ fs.readFile(htmlPath, 'utf8', (err, data) => {
       console.error('Error writing index.html:', err);
       return;
     }
-    console.log('index.html cleaned successfully.');
+    // console.log('index.html cleaned successfully.');
   });
 });
 
 redisClient.connect().then(() => {
-    console.log('Connected to Redis');
+    // console.log('Connected to Redis');
   
     // Run Webpack bundle when the server starts
     webpack(webpackConfig, (err, stats) => {
       if (err || stats.hasErrors()) {
         console.error(err || stats.toJson().errors);
       } else {
-        console.log('Webpack bundle generated successfully');
+        // console.log('Webpack bundle generated successfully');
         app.listen(PORT, () => {
-          console.log(`Server is running on http://localhost:${PORT}`);
+          // console.log(`Server is running on http://localhost:${PORT}`);
         });
       }
     });
@@ -97,7 +97,6 @@ app.get('/api/maptiler-key', (req, res) => {
 });
 
 app.get('/api/youtube-key', (req, res) => {
-  console.log('YouTube API Key:', process.env.YOUTUBE_API_KEY);  // Debugging line
   res.json({ key: process.env.YOUTUBE_API_KEY });
 });
 
@@ -191,7 +190,7 @@ app.post('/callPythonFunction', async (req, res) => {
             // console.log("Type of cacheKey:", typeof cacheKey, "Value:", cacheKey);
 
             if (cachedResult) {
-                console.log("Returning JSON result from cache:", cachedResult);
+                // console.log("Returning JSON result from cache:", cachedResult);
                 return res.json({ result: JSON.parse(cachedResult) });
             } else {
                 try {
@@ -207,7 +206,7 @@ app.post('/callPythonFunction', async (req, res) => {
                     // console.log("Type of output for setEx:", typeof output.trim(), "Value:", output.trim());
 
                     await redisClient.setEx(cacheKey, cacheExpiration, output.trim());
-                    console.log("Cached result successfully");
+                    // console.log("Cached result successfully");
 
                     res.json({ result: JSON.parse(output.trim()) });
                 } catch (error) {

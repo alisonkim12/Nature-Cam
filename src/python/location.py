@@ -54,6 +54,10 @@ def find_naturecam_locations(captions):
 
     geolocator = Nominatim(user_agent="location_extractor")
     nlp = spacy.load("en_core_web_sm")
+    response = requests.get('/api/maptiler-key')
+    response.raise_for_status()
+    data = response.json()
+    api_key = data['key']
 
     def generate_combinations(source):
         words = source.split()
