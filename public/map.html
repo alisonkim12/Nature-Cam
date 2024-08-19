@@ -12,6 +12,10 @@
 </head>
 <body>
     <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
         .custom-tooltip {
             font-size: 0.8em;
             background-color: rgba(173,216,230,0.6);
@@ -40,8 +44,8 @@
             <span style="font-size: 0.6em;" id="video-location-name"></span>
             <span style="font-size: 0.6em; font-style: italic;" id="video-location-address"></span>
         </div>
-        <iframe style="position: relative; width: 70%; height: auto; left: 10%;" id="livecam-video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allow="autoplay" allowfullscreen title=""></iframe>
-        <div>
+        <iframe style="position: relative; width: 70%; height: auto; left: 15%;" id="livecam-video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allow="autoplay" allowfullscreen title=""></iframe>
+        <div style = "width: fit-content; margin: 0 auto;">
             <span id="left-arrow" style="cursor: pointer;"><i class="ri-arrow-left-circle-line"></i></span>
             <span id="right-arrow" style="cursor: pointer;"><i class="ri-arrow-right-circle-line"></i></span>
         </div>
@@ -63,7 +67,7 @@
         let markers = [];
 
         function initializeMap(centerCoordinates) {
-            fetch('/api/maptiler-key')
+            return fetch('/api/maptiler-key')
                 .then(response => response.json())
                 .then(data => {
                     const map = L.map('map', {
@@ -80,11 +84,14 @@
                         attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
                         noWrap: true
                     }).addTo(map);
-            
+
                     return map;
                 })
-                .catch(error => console.error('Error fetching the MapTiler API key:', error));
-        }
+                .catch(error => {
+                    console.error('Error fetching the MapTiler API key:', error);
+                    return null; // Return null if there's an error
+                });
+        }       
 
         function addMarkers(map, data) {
             data.forEach((row, index) => {
@@ -124,18 +131,23 @@
                     console.log(dataset);
                     const firstPoint = dataset[0];
                     const centerCoordinates = [firstPoint.locationXcoor, firstPoint.locationYcoor];
-                    const map = initializeMap(centerCoordinates);
-                    updateInfoBox(firstPoint);
-                    addMarkers(map, dataset);
+                    initializeMap(centerCoordinates)
+                        .then(map => {
+                            if (map) {
+                                updateInfoBox(firstPoint);
+                                addMarkers(map, dataset);
 
-                    document.getElementById('left-arrow').addEventListener('click', () => navigateMarkers(map, dataset, -1));
-                    document.getElementById('right-arrow').addEventListener('click', () => navigateMarkers(map, dataset, 1));
+                                document.getElementById('left-arrow').addEventListener('click', () => navigateMarkers(map, dataset, -1));
+                                document.getElementById('right-arrow').addEventListener('click', () => navigateMarkers(map, dataset, 1));
+                            } else {
+                                console.error('Map initialization failed.');
+                            }
+                        });
                 } else {
                     console.error('Dataset not found in local storage.');
                 }
             });
         }
-
         loadData();
     </script>
 </body>

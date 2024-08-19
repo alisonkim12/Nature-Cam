@@ -53,7 +53,7 @@ function loadingMessageAnimation() {
     const maxDots = 3;
 
     setInterval(() => {
-        loadingMessage.textContent = `video loading${'.'.repeat(dots)}`;
+        loadingMessage.textContent = `videos loading${'.'.repeat(dots)}`;
         dots = (dots + 1) % (maxDots + 1);
     }, 500); 
 

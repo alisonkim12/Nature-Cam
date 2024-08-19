@@ -17,7 +17,6 @@ require('core-js/stable');
 require('regenerator-runtime/runtime');
 require('dotenv').config();
 
-
 const express = require('express');
 const { Buffer } = require('buffer');
 const process = require('process');
@@ -98,6 +97,7 @@ app.get('/api/maptiler-key', (req, res) => {
 });
 
 app.get('/api/youtube-key', (req, res) => {
+  console.log('YouTube API Key:', process.env.YOUTUBE_API_KEY);  // Debugging line
   res.json({ key: process.env.YOUTUBE_API_KEY });
 });
 
